@@ -831,3 +831,156 @@
 .mainGrid>button{
   overflow: hidden;
 }
+.two-column-container {
+  display: flex;
+}
+
+.left-column {
+  flex: 0.3;
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.right-column {
+  flex: 1;
+  background-color: #28679e;
+  padding: 20px;
+}
+.button {
+  background-color: #28679e;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.optionbar {
+  margin-bottom: 15px;
+  border: "none";
+  background-color: white;
+  border: none;
+  height: 20px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.rightButtons {
+  width: 100%;
+  justify-content: center;
+  column-gap: 50px;
+  margin: 20px 0;
+  display: flex;
+  overflow: visible;
+}
+.rightButtons > button {
+  padding: 8px 20px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 5px 5px #2069de83;
+  cursor: pointer;
+  transition: 1s;
+}
+.rightButtons > button:hover {
+  background-color: #2069de83;
+  color: white;
+  box-shadow: 0 0;
+}
+
+.right-column > button {
+  padding: 10px 15px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(4, 168, 4);
+  transition: 1s;
+  cursor: pointer;
+  float: right;
+}
+.right-column > button:hover {
+  padding: 5px 25px;
+}
+
+.questionButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.b1 {
+  height: 40px;
+  width: 130px;
+  background-color: white;
+  color: black;
+  border: none;
+  margin-right: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.b1:hover {
+  opacity: 0.9;
+}
+
+.b2 {
+  height: 40px;
+  width: 200px;
+  background-color: #f4ac49;
+  color: white;
+  border: none;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.b2:hover {
+  opacity: 0.8;
+}
+
+.b3 {
+  height: 40px;
+  width: 130px;
+  background-color: #59b95c;
+  color: white;
+  border: none;
+  margin-left: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.b3:hover {
+  opacity: 0.8;
+}
+
+.b4 {
+  background-color: #0a1d44;
+  height: 40px;
+  width: 200px;
+  color: white;
+  border: none;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.b4:hover {
+  opacity: 0.8;
+}
+
+
+.mainGrid>a>button{
+  transition: 0.6s;
+}
+.mainGrid>a>button:hover{
+  color: #28679e;
+  background-color: white;
+  border-width: 2px;
+  border-inline: solid ;
+}
