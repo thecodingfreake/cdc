@@ -81,7 +81,6 @@ app.post("/questions/spec/tech/", async (req, res) => {
   let paramsverb;
   
   if (comp === 'all') {
-      // If comp is 'all', no restriction on company selection
       techQuery = "SELECT * FROM technical_questions ORDER BY RAND() LIMIT ?";
       aptQuery = "SELECT * FROM aptitude_questions ORDER BY RAND() LIMIT ?";
       verbQuery = "SELECT * FROM verbal_questions ORDER BY RAND() LIMIT ?";
@@ -89,7 +88,7 @@ app.post("/questions/spec/tech/", async (req, res) => {
       paramsapt = [apt];
       paramsverb = [verb];
   } else {
-      // Fetch questions based on the specified company
+
       techQuery = "SELECT * FROM technical_questions WHERE company=? ORDER BY RAND() LIMIT ?";
       aptQuery = "SELECT * FROM aptitude_questions WHERE company=? ORDER BY RAND() LIMIT ?";
       verbQuery = "SELECT * FROM verbal_questions WHERE company=? ORDER BY RAND() LIMIT ?";
@@ -115,7 +114,7 @@ app.post("/questions/spec/tech/", async (req, res) => {
 });
 
 app.get("/questions/company/",(req,res)=>{
-  // const {company}=req.params
+
   pool.query(`select distinct company from technical_questions `,(err,result)=>{
       if(err){
           console.log(err)
@@ -126,7 +125,7 @@ app.get("/questions/company/",(req,res)=>{
   })
 })
 app.get("/questions/lang/",(req,res)=>{
-  // const {company}=req.params
+
   pool.query(`select distinct language from technical_questions `,(err,result)=>{
       if(err){
           console.log(err)
@@ -137,7 +136,7 @@ app.get("/questions/lang/",(req,res)=>{
   })
 })
 app.get("/questions/aptt/",(req,res)=>{
-  // const {company}=req.params
+
   pool.query(`select distinct topic from aptitude_questions `,(err,result)=>{
       if(err){
           console.log(err)
@@ -148,7 +147,7 @@ app.get("/questions/aptt/",(req,res)=>{
   })
 })
 app.get("/questions/aptc/",(req,res)=>{
-  // const {company}=req.params
+
   pool.query(`select distinct company from aptitude_questions `,(err,result)=>{
       if(err){
           console.log(err)
@@ -169,7 +168,6 @@ app.post("/questions/techm/",async(req,res)=>{
   let paramsfill;
   
   if (comp === 'all' && pro=="all") {
-      // If comp is 'all', no restriction on company selection
       mcqQuery = "SELECT * FROM technical_questions where type=? ORDER BY RAND() LIMIT ?";
       msqQuery = "SELECT * FROM technical_questions where type=? ORDER BY RAND() LIMIT ?";
       fillQuery = "SELECT * FROM technical_questions where type=? ORDER BY RAND() LIMIT ?";
@@ -177,7 +175,6 @@ app.post("/questions/techm/",async(req,res)=>{
       paramsmsq = ["Multiple Choice",msq];
       paramsfill = ["Fill Up",fill];
   } else if(comp=="all"){
-    // Fetch questions based on the specified company
     mcqQuery = "SELECT * FROM technical_questions WHERE language=? and type=? ORDER BY RAND() LIMIT ?";
     msqQuery = "SELECT * FROM technical_questions WHERE language=? and  type=? ORDER BY RAND() LIMIT ?";
     fillQuery = "SELECT * FROM technical_questions WHERE language=? and  type=?ORDER BY RAND() LIMIT ?";
@@ -185,7 +182,6 @@ app.post("/questions/techm/",async(req,res)=>{
     paramsmsq = [pro,"Multiple Choice", msq];
     paramsfill = [pro,"Fill Up", fill];
 }else if(pro=="all"){
-  // Fetch questions based on the specified company
   mcqQuery = "SELECT * FROM technical_questions WHERE company=? and type=? ORDER BY RAND() LIMIT ?";
   msqQuery = "SELECT * FROM technical_questions WHERE company=? and  type=? ORDER BY RAND() LIMIT ?";
   fillQuery = "SELECT * FROM technical_questions WHERE company=? and  type=?ORDER BY RAND() LIMIT ?";
@@ -194,7 +190,6 @@ app.post("/questions/techm/",async(req,res)=>{
   paramsfill = [comp,"Fill Up", fill];
 }
   else{
-    // Fetch questions based on the specified company
     mcqQuery = "SELECT * FROM technical_questions WHERE language=?  and type=? and company=? ORDER BY RAND() LIMIT ?";
     msqQuery = "SELECT * FROM technical_questions WHERE language=? and  type=? and company=? ORDER BY RAND() LIMIT ?";
     fillQuery = "SELECT * FROM technical_questions WHERE language=? and type=? and company=? ORDER BY RAND() LIMIT ?";
@@ -229,7 +224,6 @@ app.post("/questions/aptm/",async(req,res)=>{
   let paramsfill;
   
   if (comp === 'all' && top=="all") {
-      // If comp is 'all', no restriction on company selection
       mcqQuery = "SELECT * FROM aptitude_questions where type=? ORDER BY RAND() LIMIT ?";
       msqQuery = "SELECT * FROM aptitude_questions where type=? ORDER BY RAND() LIMIT ?";
       fillQuery = "SELECT * FROM aptitude_questions where type=? ORDER BY RAND() LIMIT ?";
@@ -237,7 +231,6 @@ app.post("/questions/aptm/",async(req,res)=>{
       paramsmsq = ["Multiple Choice",msq];
       paramsfill = ["Fill Up",fill];
   } else if(comp=="all"){
-    // Fetch questions based on the specified company
     mcqQuery = "SELECT * FROM aptitude_questions WHERE topic=? and type=? ORDER BY RAND() LIMIT ?";
     msqQuery = "SELECT * FROM aptitude_questions WHERE topic=? and  type=? ORDER BY RAND() LIMIT ?";
     fillQuery = "SELECT * FROM aptitude_questions WHERE topic=? and  type=?ORDER BY RAND() LIMIT ?";
@@ -245,7 +238,6 @@ app.post("/questions/aptm/",async(req,res)=>{
     paramsmsq = [top,"Multiple Choice", msq];
     paramsfill = [top,"Fill Up", fill];
 }else if(top=="all"){
-  // Fetch questions based on the specified company
   mcqQuery = "SELECT * FROM aptitude_questions WHERE company=? and type=? ORDER BY RAND() LIMIT ?";
   msqQuery = "SELECT * FROM aptitude_questions WHERE company=? and  type=? ORDER BY RAND() LIMIT ?";
   fillQuery = "SELECT * FROM aptitude_questions WHERE company=? and  type=?ORDER BY RAND() LIMIT ?";
@@ -254,7 +246,6 @@ app.post("/questions/aptm/",async(req,res)=>{
   paramsfill = [comp,"Fill Up", fill];
 }
   else{
-    // Fetch questions based on the specified company
     mcqQuery = "SELECT * FROM aptitude_questions WHERE topic=?  and type=? and company=? ORDER BY RAND() LIMIT ?";
     msqQuery = "SELECT * FROM aptitude_questions WHERE topic=? and  type=? and company=? ORDER BY RAND() LIMIT ?";
     fillQuery = "SELECT * FROM aptitude_questions WHERE topic=? and type=? and company=? ORDER BY RAND() LIMIT ?";
@@ -293,7 +284,6 @@ app.post("/test/schedule", (req, res) => {
                   console.log(err);
                   res.send("entering err");
               } else {
-                  // After successfully scheduling the test, add rows to test_activity table for all users
                   pool.query("SELECT email FROM user where role='student'", (err, users) => {
                       if (err) {
                           console.log(err);
@@ -305,7 +295,6 @@ app.post("/test/schedule", (req, res) => {
                                   console.log(err);
                                   res.send("error adding rows to test_activity");
                               } else {
-                                  // Successfully added rows to test_activity
                                   res.send("test scheduled successfully");
                               }
                           });
@@ -332,7 +321,6 @@ app.get("/get_test/:email", (req, res) => {
     } else {
       const testIds = result.map(row => row.test_id);
       
-      // Retrieve details of tests from test_table using the test IDs
       pool.query("SELECT test_id,test_name,duration,start_t,end_t FROM test_table WHERE test_id IN (?)", [testIds], (err, testDetails) => {
         if (err) {
           console.log(err);
@@ -345,7 +333,91 @@ app.get("/get_test/:email", (req, res) => {
     }
   });
 });
+//get questions 
+app.get("/get_question/:id", (req, res) => {
+  const id = req.params.id;
 
+  pool.query("SELECT tech_q, apt_q, verb_q FROM test_table WHERE test_id=?", id, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Internal Server Error");
+    } else {
+      const { tech_q, apt_q, verb_q } = result[0];
+
+      // Function to fetch questions from a specific table based on IDs
+      const fetchQuestions = (table, ids) => {
+        return new Promise((resolve, reject) => {
+          pool.query(`SELECT * FROM ${table} WHERE id IN (?)`, [ids], (err, questions) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(questions);
+            }
+          });
+        });
+      };
+
+      // Fetch questions from all three tables concurrently
+      Promise.all([
+        fetchQuestions('technical_questions', tech_q),
+        fetchQuestions('aptitude_questions', apt_q),
+        fetchQuestions('verbal_questions', verb_q)
+      ])
+        .then(([techQuestions, aptQuestions, verbQuestions]) => {
+          // Combine all questions into a single array
+          const allQuestions = [...techQuestions, ...aptQuestions, ...verbQuestions];
+          console.log(allQuestions.length)
+          res.json(allQuestions);
+        })
+        .catch(error => {
+          console.error(error);
+          res.status(500).send("Internal Server Error");
+        });
+    }
+  });
+});
+//adding score
+app.post("/addscore/:id/:id2", (req, res) => {
+  const id1 = req.params.id;
+  const id2 = req.params.id2;
+  const score = req.body.score;
+
+  // Use parameterized queries to prevent SQL injection
+  pool.query('UPDATE test_activity SET status = true, score = ? WHERE user_id = ? AND test_id = ?  ', [score,id2, id1], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      // Use parameterized queries for the second update as well
+        res.send("done")
+    }
+  });
+});
+//test checking
+app.get("/check/:test/:user",(req,res)=>{
+  const{test,user}=req.params
+  pool.query("select status from test_activity where user_id=? and test_id=?",[user,test],(err,result)=>{
+    if(err){
+      console.log(err)
+    }
+    else if(result[0].status==1){
+      res.send("done")
+    }
+    else{
+      res.send("not done")
+    }
+  })
+})
+//leaderboard
+app.get("/leaderboard/",(req,res)=>{
+  pool.query("select * from test_activity",(err,result)=>{
+    if(err){
+      console.log(err)
+    }
+    else{
+      res.json(result)
+    }
+  })
+})
 app.listen(5000,(req,res)=>{
     console.log("connected")
 })
